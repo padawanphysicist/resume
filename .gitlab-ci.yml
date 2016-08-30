@@ -1,0 +1,18 @@
+pages:
+  script:
+  # Clean and update packages
+  - apt-get clean -y -qq
+  - apt-get update -y -qq
+  # Install GNU make
+  - apt-get install make -y -q
+  # Install GNU Emacs (with no X support)
+  - apt-get install emacs-nox -y -q
+  # Install Emacs packages and publish
+  - make all
+  # Cleaning
+  - mv public_html public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

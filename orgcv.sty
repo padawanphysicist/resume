@@ -1,0 +1,148 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+  \ProvidesPackage{orgcv}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%% Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \RequirePackage{kvoptions}
+  \SetupKeyvalOptions{
+    family=CV,
+    prefix=CV@
+  }
+  \DeclareStringOption{profilePic} % holding the filename of profile pic
+  \DeclareStringOption[60pt]{profilePicWidth} % holding width of profile pic
+  \ProcessKeyvalOptions*
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%% END Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  % A Few Useful Packages
+  \RequirePackage[paper=a4paper,top=0.5in, bottom=0.5in, left=2in, right=1in]%
+                 {geometry}
+  \RequirePackage{titlesec} % custom section
+  \RequirePackage{etoolbox} % Needed for if-else statements
+  \RequirePackage{paralist} % Define special lists
+  \RequirePackage{tabto} % Allow tabbing for inline tabbed list
+  \RequirePackage[symbol]{footmisc} % Have symbols instead of number for footnotes
+  \RequirePackage{tikz} % Used for insertion and decoration of the profile picture
+  \usetikzlibrary{calc}
+  \RequirePackage{color}
+  \RequirePackage{hyperref}
+  \definecolor{linkcolour}{rgb}{0,0.2,0.6}
+  \hypersetup{colorlinks,breaklinks, urlcolor=linkcolour,linkcolor=linkcolour}
+
+  \pagestyle{empty} % plain
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% Measure profile picture's dimensions for the insertion in the title.
+  \newlength{\ProfilePich} % Will store the height of the profile picture
+  \newcommand{\setProfilePich}[1]{
+                                  \settoheight{\ProfilePich}{\usebox{#1}}
+                                 }
+  \newlength{\ProfilePicd} % Will store the depth  of the profile picture
+  \newcommand{\setProfilePicd}[1]{
+                                  \settowidth{\ProfilePicd}{\usebox{#1}}
+                                 }
+  \newlength{\ProfilePicw} % Will store the width  of the profile picture
+  \newcommand{\setProfilePicw}[1]{
+                                  \settowidth{\ProfilePicw}{\usebox{#1}}
+                                 }
+  \newsavebox{\ProfilePic}
+  \newcommand{\profilePicDimensions}[1]{
+    % create and save the box
+    \savebox{\ProfilePic}{%
+      \includegraphics[keepaspectratio=true,width=\@yourpicturewidth]{#1}%
+    }
+    \setProfilePich{\ProfilePic}
+    \setProfilePicw{\ProfilePic}
+    \setProfilePicd{\ProfilePic}
+  }%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% Title
+  %%
+  % Check whether profile picture was provided as a package option.
+  \ifx \CV@profilePic \@empty
+    \relax % profile pic was not provided in package's options
+  \else
+    \def\@yourpicture{\CV@profilePic}
+    \def\@yourpicturewidth{\CV@profilePicWidth}
+  \fi
+  \renewcommand*{\maketitle}{%
+    \begin{minipage}[t]{0.7\linewidth}
+      % Insert candidate's name as given in the org-file.
+      \raggedright{{\Huge \bfseries \scalebox{1.2}{\@title}}}\\[.5in]
+    \end{minipage}
+    \hfill
+    \ifdef{\@yourpicture}{ % profile pic was provided
+      \profilePicDimensions{\@yourpicture}
+      \begin{minipage}[t]{0.2\linewidth}
+        \raggedleft{
+          \begin{tikzpicture}
+            \fill[black!20] (0,0) %
+            node[anchor=south west] {%
+              \includegraphics[keepaspectratio=true,width=\@yourpicturewidth]%
+              {\@yourpicture}%
+            } %
+            rectangle ($(\the\ProfilePicw,\the\ProfilePich)$);
+          \end{tikzpicture}
+        }
+      \end{minipage}
+      } % end of profile picture insertion.
+      {
+        % No profile picture to insert
+      }
+  }
+  %%%%%%%%%%%%%%%%%%%%%%%%End of heading%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %% Section Headings, etc.
+  \titleformat{\section} %command
+              % [] % shape
+              {\Large\scshape\raggedright} %format
+              {} %label
+              {0pt} %sep
+              {} %before
+              [\titlerule\vspace{2ex}]
+  \titlespacing{\section}{0pt}{6ex}{0ex}
+
+  \titleformat{\subsection} %command
+              {\small\bfseries\raggedright} %format
+              {} %label
+              {0pt} %sep
+              {} %before
+              [\vspace{0.5ex}] %after
+  \titlespacing{\subsection}{0pt}{4ex}{0ex}
+
+  \titleformat{\subsubsection} %command
+              [leftmargin] %shape
+              {\small\scshape\raggedleft} %format
+              {} %label
+              {0pt} %sep
+              {} %before
+              [] %after
+  \titlespacing{\subsubsection}{16em}{0.25ex}{2em}
+  %%%%%%%%%%%%%%%%%%%%%%%%End of sectioning%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Paragraph indent
+  \setlength{\parindent}{0cm}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Lists
+  % This macro alters a list by removing some of the space that follows the list
+  % (is used by lists below)
+  % Inline tabbed itemize
+  \newenvironment{tabbedenum}[1]
+  {\NumTabs{#1}\inparaitem\let\latexitem\item
+    \def\item{%
+      \def\item{\tab\latexitem}\latexitem}}
+  {\endinparaenum}
+
+  \renewenvironment{itemize}{
+    \begin{list}{\textbullet}{%
+        \setlength{\itemsep}{0.25ex}
+        \setlength{\parsep}{0em}
+        \setlength{\parskip}{0em}
+        \setlength{\topsep}{0em}
+        \setlength{\partopsep}{0em}
+        \setlength{\leftmargin}{1em}}}{\end{list}}
+  %%%%%%%%%%%%%%%%%%%%%%%%End of lists definitions%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,3 @@
+lisp/publish.el
+*.pdf
+public_html/
