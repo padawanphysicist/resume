@@ -1,28 +1,9 @@
-EMACS?=emacs
+# Update LaTeX class
+update-altacv:
+	curl -L	https://raw.githubusercontent.com/liantze/AltaCV/main/altacv.cls --output texmf/tex/latex/altacv.cls
 
-publish: pub clean
-all: pkg pub clean
-
-pkg:
-	@echo "Installing Emacs packages..."
-	$(EMACS) $(DEBUG) --batch --script lisp/packages.el
-	@echo ""
-	@echo "[OK] Done."
-
-pub:
-	@echo "Publishing index..."
-	sed "s@{{root-dir}}@${PWD}/@g" lisp/publish.mo.el > lisp/publish.el
-	$(EMACS) $(DEBUG) -Q --batch -l lisp/publish.el index.org --eval "(export t)"
-	@echo "[OK] Done."
-
-pdf:
-	@echo "Creating pdf..."
-	sed "s@{{root-dir}}@${PWD}/@g" lisp/publish.mo.el > lisp/publish.el
-	$(EMACS) $(DEBUG) -Q --batch -l lisp/publish.el index.org --eval "(export-pdf t)"
-	@rm -rf index.tex
-	@find . -iname '*~' -type f -delete
-	@echo "[OK] Done."
+build: victor-santos.tex
+	TEXMFHOME=./texmf arara -lv victor-santos.tex
 
 clean:
-	find . -iname '*~' -type f -delete
-	rm -rf lisp/publish.el
+	rm -f *.pdf *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.bcf *.xml *.xmpi

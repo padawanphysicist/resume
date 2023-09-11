@@ -1,3 +1,0 @@
-#+TITLE: Resume
-
-This is my resume. It is written in org-mode, and it uses org-mode niceties to export both LaTeX/pdf and html/online versions. For LaTeX it uses the class described in the nice project [[https://github.com/punchagan/resume][resume]] written by [[https://github.com/punchagan/][Puneeth Chaganti]], while for html it uses my personal org-mode exporter [[https://gitlab.com/padawanphysicist/ox-blog][ox-blog]].
