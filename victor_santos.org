@@ -1,0 +1,251 @@
+#+title: My dreams job
+#+author: Victor Santos
+#+tagline: Data Scientist | Software Engineer | Climber | Geek
+#+email: vct.santos@protonmail.com
+#+github: padawanphysicist
+#+gitlab: padawanphysicist
+#+location: Fortaleza, Ceará, Brazil
+#+linkedin: vctsantos
+#+orcid: 0000-0001-6725-2761
+#+phone: +55-85-98188-2001
+#+homepage: https://vsantos.me
+#+photo: avatar.jpg
+#+latex_header: \graphicspath{{assets/img/}}
+#+latex_header: \input{pubs-num.cfg}
+#+latex_header: \addbibresource{assets/publications.bib}
+#+column_ratio: 0.6
+# macro: divider @@latex:\divider@@
+#+macro: divider @@latex:\\{\textcolor{body!30}{\rule{\linewidth}{0.5pt}}\\}@@
+# macro: divider @@latex:\begin{center}\vspace{-0.5cm}\textcolor{lightgray}{\rule{0.54\textwidth}{0.07pt}}\vspace{-0.3cm}\end{center}@@
+
+#+begin_export latex
+\begin{justify}
+\vspace{-0.3cm}
+As a Data Engineer at the Fortaleza Planning Institute (IPLANFOR), I worked with a small team to develop and maintain data pipelines, databases, and dashboards to aid the creation and monitoring of public policies in urban planning and management. This provided reliable and actionable data insights for decision makers. I have a strong academic background in Physics, with a PhD in Theoretical and Mathematical Physics from the Federal University of Ceará, where I also taught as a Lecturer for 1.5 years. I have published multiple papers in peer-reviewed journals and presented my research at international conferences. Although my research involves theoretical aspects in Physics, I am passionate about the possible applications of Physics and its methods to real-world problems.
+\end{justify}
+\vspace{-0.3cm}
+#+end_export
+
+# Start a 2-column paracol. Both the left and right columns will automatically
+# break across pages if things get too long.
+#+latex: \begin{paracol}{2}
+* Professional Experience
+:properties:
+:cventry: cvsection
+:end:
+** Data Engineer & Data Scientist
+:properties:
+:CVENTRY: cvevent
+:COMPANY: Fortaleza Planning Institute (IPLANFOR)
+:FROM: July 2021
+:TO: September 2023
+:LOCATION: Fortaleza, Ceará, Brazil
+:end:
+
+- Creation of the [[https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/][Data Observatory Platform]], aggregating data from the city and analyzes used in monitoring public policies
+- Assistance in the Situation Room
+- Assistante in the writing of studies and technical notes
+- Participation in the structuring of the City Hall [[https://www.fortaleza.ce.gov.br/noticias/fortaleza-cidade-inteligente-prefeitura-anuncia-central-integrada-e-politica-publica-de-videomonitoramento][video surveillance central]]
+
+*Main technologies*: R (Shiny), Python (Pandas, Prefect), PostgreSQL, Docker, OpenShift
+{{{divider}}}
+** Data Scientist
+:properties:
+:cventry: cvevent
+:company: Fundação Cearense de Apoio ao Desenvolvimento Científico e Tecnológico (FUNCAP)
+:from: August 2018
+:to: November 2022
+:location: Fortaleza, Ceará, Brazil
+:end:
+
+- Analysis and evaluation of scientific research developed in the state of Ceará, establishing an overview of the main areas funded by the government and a profile of the researchers and publications within the national and international scenario, through collecting and analyzing of data from national and international publishing databases, such as the [[https://lattes.cnpq.br/][Lattes platform]], [[https://www.scielo.br][Scielo]], [[https://scholar.google.com.br/][Google Scholar]] and [[http://montenegro.funcap.ce.gov.br/sugba/][Montenegro platform]].
+
+*Main technologies*: R, Ruby, Docker, PostgreSQL, BaseX, ArangoDB
+{{{divider}}}
+** Assistant Professor
+:properties:
+:cventry: cvevent
+:company: Universidade Federal do Ceará
+:from: February 2017
+:to: January 2019
+:location: Fortaleza, Ceará, Brazil
+:end:
+
+- Lecturing Basic Physics courses for Engineering, Physics and Geology
+
+*Main technologies*: Python (for simulations), LaTeX
+{{{divider}}}
+** Postdoc researcher
+:properties:
+:cventry: cvevent
+:company: Universidade Federal do Ceará
+:from: August 2015
+:to: January 2017
+:location: Fortaleza, Ceará, Brazil
+:end:
+
+- Research on quantum aspects of gravitational theories
+- Mentoring graduate students
+
+*Main technologies* Python, LaTeX
+
+#+latex: \switchcolumn
+* Programming/Markup Languages
+:properties:
+:cventry: cvsection
+:end:
+** Python
+:properties:
+:cventry: cvtag
+:end:
+** R
+:properties:
+:cventry: cvtag
+:end:
+** Ruby
+:properties:
+:cventry: cvtag
+:end:
+** C/C++
+:properties:
+:cventry: cvtag
+:end:
+** Fortran
+:properties:
+:cventry: cvtag
+:end:
+** Common Lisp
+:properties:
+:cventry: cvtag
+:end:
+** JavaScript
+:properties:
+:cventry: cvtag
+:end:
+** HTML/CSS
+:properties:
+:cventry: cvtag
+:end:
+** PL/SQL
+:properties:
+:cventry: cvtag
+:end:
+* Platforms
+:properties:
+:cventry: cvsection
+:end:
+** Apache Superset
+:properties:
+:cventry: cvtag
+:end:
+** Docker
+:properties:
+:cventry: cvtag
+:end:
+** Kubernetes
+:properties:
+:cventry: cvtag
+:end:
+** Apache Spark
+:properties:
+:cventry: cvtag
+:end:
+** Google Cloud Computing
+:properties:
+:cventry: cvtag
+:end:
+* Strengths
+:properties:
+:cventry: cvsection
+:end:
+** Hard-working
+:properties:
+:cventry: cvtag
+:end:
+** Flexibility
+:properties:
+:cventry: cvtag
+:end:
+** Patience
+:properties:
+:cventry: cvtag
+:end:
+** Motivation
+:properties:
+:cventry: cvtag
+:end:
+** Web Scraping
+:properties:
+:cventry: cvtag
+:end:
+** Data Mining
+:properties:
+:cventry: cvtag
+:end:
+** Analytical Thinking
+:properties:
+:cventry: cvtag
+:end:
+** Research
+:properties:
+:cventry: cvtag
+:end:
+** Teamwork
+:PROPERTIES:
+:cventry:  cvtag
+:END:
+* Languages
+:properties:
+:cventry: cvsection
+:end:
+** English
+:properties:
+:cventry: cvskill
+:skill_level: 4
+:end:
+** Portuguese (Native)
+:properties:
+:cventry: cvskill
+:skill_level: 5
+:end:
+* Education
+:properties:
+:cventry: cvsection
+:end:
+** Ph.D. in Physics
+:properties:
+:CVENTRY: cvevent
+:COMPANY: Universidade Federal do Ceará
+:FROM: 2005
+:TO: 2008
+:LOCATION: Fortaleza, Ceará, Brazil 
+:end:
+
+** B.S. in Physics
+:properties:
+:CVENTRY: cvevent
+:COMPANY: Universidade Federal do Ceará
+:FROM: 2010
+:TO: 2014
+:LOCATION: Fortaleza, Ceará, Brazil 
+:end:
+
+#+latex: \end{paracol}
+
+* Latest Publications
+:properties:
+:cventry: cvsection
+:end:
+#+begin_export latex
+%% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
+%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+%% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
+\mynames{Victor\bibnamedelima Santos, V.\bibnamedelima Santos}
+%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+\nocite{*}
+%\printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles\vspace{0.5cm}}}, type=article]
+\printbibliography[heading=none, type=article]
+#+end_export
+# Switch to the right column. This will now automatically move to the second
+# page if the content is too long.
+
