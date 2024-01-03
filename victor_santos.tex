@@ -1,0 +1,153 @@
+% Created 2024-01-03 Wed 18:21
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+\geometry{left=1.25cm,right=1.25cm,top=1.25cm,bottom=1.25cm,columnsep=1cm}
+
+\usepackage{paracol}
+
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Lato}
+\else
+  % If using pdflatex:
+  \usepackage[default]{lato}
+\fi
+
+\definecolor{VividPurple}{HTML}{3E0097}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{VividPurple}
+\colorlet{headingrule}{VividPurple}
+\colorlet{accent}{VividPurple}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+
+\usepackage{newfields}
+
+\graphicspath{{assets/img/}}
+\input{pubs-num.cfg}
+\addbibresource{assets/publications.bib}
+
+\begin{document}
+\name{Victor Santos}
+  \tagline{Data Scientist | Software Engineer | Physicist}
+\photoR{2.5cm}{avatar.jpg}
+\personalinfo{%
+  \email{vct.santos@protonmail.com}
+  \location{Fortaleza, Ceará, Brazil}
+  \linkedin{vctsantos}
+  \homepage{https://vsantos.me}
+  \github{github.com/padawanphysicist}
+  \gitlab{gitlab.com/padawanphysicist}
+  \orcid{0000-0001-6725-2761}
+  \phone{}
+}
+\makecvheader
+\AtBeginEnvironment{itemize}{\small}\columnratio{0.6}\begin{justify}
+\vspace{-0.3cm}
+As a Data Engineer at the Fortaleza Planning Institute (IPLANFOR), I worked with a small team to develop and maintain data pipelines, databases, and dashboards to aid the creation and monitoring of public policies in urban planning and management. This provided reliable and actionable data insights for decision makers. I have a strong academic background in Physics, with a PhD in Theoretical and Mathematical Physics from the Federal University of Ceará, where I also taught as a Lecturer for 1.5 years. I have published multiple papers in peer-reviewed journals and presented my research at international conferences. Although my research involves theoretical aspects in Physics, I am passionate about the possible applications of Physics and its methods to real-world problems.
+\end{justify}
+\vspace{-0.3cm}
+
+\begin{paracol}{2}
+
+\cvsection{Experience}
+
+\cvevent{Data Engineer \& Data Scientist}{Fortaleza Planning Institute (IPLANFOR)}{July 2021 -- September 2023}{Fortaleza, Ceará, Brazil}
+
+\begin{itemize}
+\item Creation of the \href{https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/}{Data Observatory Platform}, aggregating data from the city and analyzes used in monitoring public policies
+\item Assistance in the Situation Room
+\item Assistante in the writing of studies and technical notes
+\item Participation in the structuring of the City Hall \href{https://www.fortaleza.ce.gov.br/noticias/fortaleza-cidade-inteligente-prefeitura-anuncia-central-integrada-e-politica-publica-de-videomonitoramento}{video surveillance central}
+\end{itemize}
+
+\textbf{Main technologies}: R (Shiny), Python (Pandas, Prefect), PostgreSQL, Docker, OpenShift
+\\{\textcolor{body!30}{\rule{\linewidth}{0.5pt}}\\}
+\cvevent{Data Scientist}{Fundação Cearense de Apoio ao Desenvolvimento Científico e Tecnológico (FUNCAP)}{August 2018 -- November 2022}{Fortaleza, Ceará, Brazil}
+
+\begin{itemize}
+\item Analysis and evaluation of scientific research developed in the state of Ceará, establishing an overview of the main areas funded by the government and a profile of the researchers and publications within the national and international scenario, through collecting and analyzing of data from national and international publishing databases, such as the \href{https://lattes.cnpq.br/}{Lattes platform}, \href{https://www.scielo.br}{Scielo}, \href{https://scholar.google.com.br/}{Google Scholar} and \href{http://montenegro.funcap.ce.gov.br/sugba/}{Montenegro platform}.
+\end{itemize}
+
+\textbf{Main technologies}: R, Ruby, Docker, PostgreSQL, BaseX, ArangoDB
+\\{\textcolor{body!30}{\rule{\linewidth}{0.5pt}}\\}
+\cvevent{Assistant Professor}{Universidade Federal do Ceará}{February 2017 -- January 2019}{Fortaleza, Ceará, Brazil}
+
+\begin{itemize}
+\item Lecturing Basic Physics courses for Engineering, Physics and Geology
+\end{itemize}
+
+\textbf{Main technologies}: Python (for simulations), \LaTeX{}
+\\{\textcolor{body!30}{\rule{\linewidth}{0.5pt}}\\}
+\cvevent{Postdoc researcher}{Universidade Federal do Ceará}{August 2015 -- January 2017}{Fortaleza, Ceará, Brazil}
+
+\begin{itemize}
+\item Research on quantum aspects of gravitational theories
+\item Mentoring graduate students
+\end{itemize}
+
+\textbf{Main technologies} Python, \LaTeX{}
+
+\switchcolumn
+
+\cvsection{Programming/Markup Languages}
+
+\cvtag{Python}
+\cvtag{R}
+\cvtag{Ruby}
+\cvtag{C/C++}
+\cvtag{Fortran}
+\cvtag{Common Lisp}
+\cvtag{JavaScript}
+\cvtag{HTML/CSS}
+\cvtag{PL/SQL}
+
+\cvsection{Platforms}
+
+\cvtag{Apache Superset}
+\cvtag{Docker}
+\cvtag{Kubernetes}
+\cvtag{Apache Spark}
+\cvtag{Google Cloud Computing}
+
+\cvsection{Soft Skills}
+
+\cvtag{Hard-working}
+\cvtag{Flexibility}
+\cvtag{Patience}
+\cvtag{Motivation}
+\cvtag{Web Scraping}
+\cvtag{Data Mining}
+\cvtag{Analytical Thinking}
+\cvtag{Research}
+\cvtag{Teamwork}
+
+\cvsection{Languages}
+
+\cvskill{English}{4}
+\cvskill{Portuguese (Native)}{5}
+
+\cvsection{Education}
+
+\cvevent{Ph.D. in Physics}{Universidade Federal do Ceará}{2005 -- 2008}{Fortaleza, Ceará, Brazil}
+
+\cvevent{B.S. in Physics}{Universidade Federal do Ceará}{2010 -- 2014}{Fortaleza, Ceará, Brazil}
+
+\end{paracol}
+
+
+\cvsection{Projects}
+
+%% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
+%% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+%% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
+\mynames{Victor\bibnamedelima Santos, V.\bibnamedelima Santos}
+%% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+\nocite{*}
+%\printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles\vspace{0.5cm}}}, type=article]
+\printbibliography[heading=none, type=article]
+\end{document}
