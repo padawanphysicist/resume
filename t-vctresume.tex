@@ -1,0 +1,135 @@
+\startmodule [vctresume]
+
+\writestatus{loading}{Macros for resumes}
+
+\unprotect
+
+%%%%%%%%%%%%%%%%
+%D Page layout %
+%%%%%%%%%%%%%%%%
+\setuppapersize[A4]
+% https://wiki.contextgarden.net/Page_Layout
+% https://tex.stackexchange.com/questions/71048/how-to-set-the-page-layout-dimensions-in-context
+\def\mymargin{0.5in}
+\setuplayout
+  [header=0pt,
+   footer=0pt,
+   margin=0pt,
+   topspace=\mymargin,
+   backspace=\mymargin,
+   width=fit,
+   % margin bottom of text to paper
+   height=\dimexpr
+   \paperheight-\topspace+\footerheight+\footerdistance-\mymargin\relax]
+% Disable page numbering
+\setuppagenumbering[location=]
+
+%%%%%%%%%%%%%%%%
+%D Setup fonts %
+%%%%%%%%%%%%%%%%
+\setupbodyfont[10pt]
+
+% https://tex.stackexchange.com/questions/610503/how-can-i-use-academicons-in-context
+\startsymbolset[fa][font=name:fontawesome6freeregular]
+\stopsymbolset
+\startsymbolset[fs][font=name:fontawesome6freesolid]
+\stopsymbolset
+\startsymbolset[fb][font=name:fontawesome6brandsregular]
+\stopsymbolset
+\define[1]\FA{\symbol[fa][#1]}
+\define[1]\FS{\symbol[fs][#1]}
+\define[1]\FB{\symbol[fb][#1]}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%D Color definitions %
+%%%%%%%%%%%%%%%%%%%%%%
+\definecolor[vctgray][x=818181]
+\definecolor[vcturl][x=00396b]
+
+%%%%%%%%%
+%D URLs %
+%%%%%%%%%
+\setupurl
+   [color=vcturl,
+     style=\tf]
+\setupinteraction
+   [state=start,
+    color=vcturl,
+    style=\tf]
+
+\define[2]\href{\goto{#2}[url(#1)]}
+\define[1]\url{\href{#1}{#1}}
+
+% Section formatter
+\define[1]\CVSectionFormat{\setcharactercasing[WORD]\tfa\bf #1}
+
+%D CV Title
+%\setupframed[height=2.0cm,frame=off]  
+% \define[2]\cvtitle{%
+%   \framed[width=11cm,top=\vss,bottom=\vss]{%
+%     {\switchtobodyfont[16pt]\bf \uppercase{#1}}
+%     \blank[3mm]\hairline\blank[.25mm]
+%     {\switchtobodyfont[14.5pt] #2}
+%   }  
+% }
+
+% \define[1]\cvsummary{%
+%     Summary\\
+%     #1  
+% }
+
+%D CV Subtitle
+% \define[1]\cvsubtitle{%
+%     \startalignment[middle]
+%     {\CVSectionFormat #1}
+%     \stopalignment
+% }
+
+%D Summary section header
+% https://tex.stackexchange.com/questions/497352/context-heading-text-surrounded-by-lines
+\definefiller
+  [SectionRule]
+  [alternative=rule,
+   height=0.7ex,
+   depth=-0.6ex]
+\definefiller
+  [SectionLeftRule]
+  [SectionRule]
+  [left=\zerowidthnobreakspace,
+   right=\quad]
+\definefiller
+  [SectionRightRule]
+  [SectionRule]
+  [left=\quad,
+   right=\zerowidthnobreakspace]
+\definehead[cvsummary][title]
+\setuphead
+  [title]
+  [%align=middle,
+    page=no,
+    %before={\vspace[-2cm]},
+    %after={\vspace[-1cm]},
+   textstyle={\CVSectionFormat},
+   textcommand=\groupedcommand{\filler[SectionLeftRule]}{\filler[SectionRightRule]}]
+
+%D CV heading
+\definehead[cvhead][subject]
+\define\smallskip{\blank[1mm]}
+\setuphead[subject][%
+  after=\hrule\smallskip,%
+  textstyle={\CVSectionFormat},
+  %aftersection={\vspace[-1cm]}%
+]
+
+\define[4]\cveducation{%
+  {\bf #1}\hfill{\it \color[vctgray]{#2}}\\
+  #3\hfill#4
+}
+
+\define[4]\cvjob{%
+  {\bf #1}\hfill{\it \color[vctgray]{#2}}\\
+  #3\hfill#4  
+}
+
+\protect
+\stopmodule

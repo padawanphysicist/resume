@@ -1,0 +1,66 @@
+\showframe
+\usemodule[vctresume,newcolumnsets,visual]
+
+%%%%%%%%%%%%%%%%%
+% Setup columns %
+%%%%%%%%%%%%%%%%%
+\definecolumnset[resume][n=2,distance=0.0333\makeupwidth]
+\setupcolumnset[resume:1][width=.3\makeupwidth]
+\setupcolumnset[resume:2][width=.6\makeupwidth]
+\setupcolumnset[resume:3][width=.6\makeupwidth]
+\setupcolumnset[resume:4][width=.3\makeupwidth]
+\definecolumnsetspan[wide][n=2]
+
+
+%\showframe
+
+\starttext
+
+% \startcolumnset[resume]
+%   \dorecurse{25}{\fakewords{50}{75}\column}
+% \stopcolumnset
+
+
+\startcolumnset[resume]  
+  \startcolumnsetspan[wide][default=tblr]
+    Victor Santos\\
+    Data Scientist \| Software Engineer \| Physicist\\
+    
+    3+ years of experience with data driven solutions to increase efficienty, accuracy and utility of data processing. Experienced with data pipelines, databases and analytic dashboards to deliver insights and implement action-oriented solutions. I am looking for opportunities that allow me to explore the intersection of data science and the challenges of business decisions, expanding my technical knowledge and positively impacting organizations.
+
+    % \startalignment[flushright]
+  % Fortaleza, Ceará, Brazil\\
+  % victor\_santos@fisica.ufc.br\\
+  % linkedin\\
+  % github
+  % \stopalignment
+  \stopcolumnsetspan
+
+  \startcvhead[title={Experience}]
+    \dorecurse{1}{\fakewords{100}{200}\par}
+  \stopcvhead
+
+  \startcvhead[title={Education}]
+    \dorecurse{1}{\fakewords{100}{200}\par}
+  \stopcvhead
+
+  \startcvhead[title={Projects}]
+    \dorecurse{1}{\fakewords{100}{200}\par}
+  \stopcvhead
+  \column
+
+  \startcvhead[title={Hard Skills}]
+    \dorecurse{1}{\fakewords{50}{50}\par}
+  \stopcvhead
+
+  \startcvhead[title={Soft Skills}]
+    \dorecurse{1}{\fakewords{50}{50}\par}
+  \stopcvhead
+
+  \startcvhead[title={Languages}]
+    \dorecurse{1}{\fakewords{20}{20}\par}
+  \stopcvhead
+
+  
+\stopcolumnset
+\stoptext
