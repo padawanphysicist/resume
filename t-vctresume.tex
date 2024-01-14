@@ -2,6 +2,8 @@
 
 \writestatus{loading}{Macros for resumes}
 
+\usemodule[newcolumnsets]
+
 \unprotect
 
 %%%%%%%%%%%%%%%%
@@ -10,24 +12,44 @@
 \setuppapersize[A4]
 % https://wiki.contextgarden.net/Page_Layout
 % https://tex.stackexchange.com/questions/71048/how-to-set-the-page-layout-dimensions-in-context
-\def\mymargin{0.5in}
-\setuplayout
+% \def\mymargin{0.5in}
+% \setuplayout
+%   [header=0pt,
+%    footer=0pt,
+%    margin=0pt,
+%    topspace=\mymargin,
+%    backspace=\mymargin,
+%    width=fit,
+%    % margin bottom of text to paper
+%    height=\dimexpr
+%    \paperheight-\topspace+\footerheight+\footerdistance-\mymargin\relax]
+
+\def\setmargins#1{%
+  \setuplayout
   [header=0pt,
    footer=0pt,
    margin=0pt,
-   topspace=\mymargin,
-   backspace=\mymargin,
+   topspace=#1,
+   backspace=#1,
    width=fit,
    % margin bottom of text to paper
    height=\dimexpr
-   \paperheight-\topspace+\footerheight+\footerdistance-\mymargin\relax]
+   \paperheight-\topspace+\footerheight+\footerdistance-#1\relax]%
+}
+
 % Disable page numbering
 \setuppagenumbering[location=]
 
 %%%%%%%%%%%%%%%%
 %D Setup fonts %
 %%%%%%%%%%%%%%%%
-\setupbodyfont[10pt]
+% https://wiki.contextgarden.net/Use_the_fonts_you_want
+\starttypescript [mylato]
+  \definesynonym[Lato-Regular] [file:Lato-Regular.ttf]
+  \definesynonym[Lato-Italic] [file:Lato-Italic.ttf]
+  \definesynonym[Lato-BoldItalic] [file:Lato-BoldItalic.ttf]
+  \definesynonym[Lato-Bold] [file:Lato-Bold.ttf]
+\stoptypescript
 
 % https://tex.stackexchange.com/questions/610503/how-can-i-use-academicons-in-context
 \startsymbolset[fa][font=name:fontawesome6freeregular]
@@ -36,9 +58,35 @@
 \stopsymbolset
 \startsymbolset[fb][font=name:fontawesome6brandsregular]
 \stopsymbolset
-\define[1]\FA{\symbol[fa][#1]}
-\define[1]\FS{\symbol[fs][#1]}
-\define[1]\FB{\symbol[fb][#1]}
+\def\FA#1{\symbol[fa][#1]}
+\def\FS#1{\symbol[fs][#1]}
+\def\FB#1{\symbol[fb][#1]}
+
+\starttypescript [mylatosans]
+  \setups[font:fallback:sans]          % security: if not found==> back to defaults
+  \definefontsynonym[Serif]                [Lato-Regular]    [features=default]
+  \definefontsynonym[SerifItalic]          [Lato-Italic]     [features=default]
+  \definefontsynonym[SerifBold]            [Lato-Bold]       [features=default]
+  \definefontsynonym[SerifBoldItalic]      [Lato-BoldItalic] [features=default]
+\stoptypescript
+
+\starttypescript [mylatosans]
+  \definetypeface [mylatosans]    [rm] [serif] [mylatosans]    [default]
+\stoptypescript
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup columns for onepage mode %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\doifmode{onepage}{%  
+\definecolumnset[resume][n=2,distance=0.0333\makeupwidth]
+\setupcolumnset[resume:1][width=.36\makeupwidth]
+\setupcolumnset[resume:2][width=.6\makeupwidth]
+\setupcolumnset[resume:3][width=.6\makeupwidth]
+\setupcolumnset[resume:4][width=.36\makeupwidth]
+\definecolumnsetspan[wide][n=2]
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%
 %D Color definitions %
@@ -49,87 +97,160 @@
 %%%%%%%%%
 %D URLs %
 %%%%%%%%%
-\setupurl
-   [color=vcturl,
-     style=\tf]
-\setupinteraction
-   [state=start,
-    color=vcturl,
-    style=\tf]
+\setupurl[color=vcturl, style=\tf]
+\setupinteraction[state=start,color=vcturl,style=\tf]
 
-\define[2]\href{\goto{#2}[url(#1)]}
-\define[1]\url{\href{#1}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%D Language Abbreviations %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setuplabeltext [en]
+  [  january:mnem=Jan,
+    february:mnem=Feb,
+       march:mnem=Mar,
+       april:mnem=Apr,
+         may:mnem=May,
+        june:mnem=Jun,
+        july:mnem=Jul,
+      august:mnem=Aug,
+   september:mnem=Sep,
+     october:mnem=Oct,
+    november:mnem=Nov,
+    december:mnem=Dec]
 
+\setuplabeltext [pt-br]
+  [  january:mnem=Jan,
+    february:mnem=Fev,
+       march:mnem=Mar,
+       april:mnem=Abr,
+         may:mnem=Mai,
+        june:mnem=Jun,
+        july:mnem=Jul,
+      august:mnem=Ago,
+   september:mnem=Set,
+     october:mnem=Out,
+    november:mnem=Nov,
+    december:mnem=Dez]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%D Main macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%D export
+\define[2]\doifonepageelse{%
+  \doifmodeelse{onepage}{%% Process code for onepage layout
+    {#1}%
+  }{%% Else
+    \doifmode{twopage}{%% Process code for twopage layout
+      {#2}%
+    }%
+  }%
+}
+
+%D export
+\define[2]\translate{%
+  \doifmodeelse{portuguese}{%% Process code for [pt-br] language
+    {#1}%
+  }{%% Else
+    \doifmode{english}{%% Process code for [en] language
+      {#2}%
+    }%
+  }%
+}
+
+%D export
+\define[2]\MonthYear{%
+  \translate{%
+    \setuplanguage [pt-br] [date={month:mnem, year}]%
+    \date[m=#1,y=#2]%
+  }{%
+    \setuplanguage [en] [date={month:mnem, year}]%
+    \date[m=#1,y=#2]%
+  }%
+}
+
+%D export
+\define[2]\href{%
+  \goto{#2}[url(#1)]%
+}
+
+%D export
+\define[1]\url{%
+  \href{#1}{#1}%
+}
+
+%D export
+% #1: Name of the event
+% #2: Time period
+% #3: Long description
+% #4: Location
+% #5: Description
+\define[5]\cvevent{%
+  \startmode[onepage]
+  {\bf {#1}}\hfill{\it \color[vctgray]{#2}}\par%
+  {\it #3}\par%
+  {#4}\par%
+  \blank[2mm]%
+  {#5}\par%
+  \stopmode
+  \startmode[twopage]
+  {\bf {#1}}\hfill{\it \color[vctgray]{#2}}\par%
+  {{#3}\hfill{#4}}\par%
+  #5\par%
+  \stopmode
+}
+
+%D export
+% #1: Name of the project
+% #2: Brief description
+% #3: Long description
+\define[3]\cvproject{%
+  {#1}\par%
+  \doifonepageelse{%% Process code for onepage layout
+    \blank[3mm]%%
+    {#2}\par%% Brief description
+  }{%% Process code for twopage layout
+    {#3}\par%% Long description
+  }%
+}
+
+%D export
+% Horizontal ruler
+\define\hlsep{%
+  \blackrule[color=gray,width=\textwidth,height=1pt]%
+}
+
+\defineframed
+  [cvtag]
+  [location=low, frame=off, bottomframe=on, framecolor=gray]
+  %[corner=round,offset=3pt]
+%D export
+% \define[1]\cvtag{%
+%   \framed{\switchtobodyfont[10pt]#1}
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%D Enumeration settings %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setupitemgroup[itemize][1][joinedup,nowhite,after,before,fit,packed][width=1em,distance=0.1cm]
+%\setupitemgroup[itemize][1][joinedup,nowhite,fit,packed][width=1em,distance=0.1cm]
+
+%\defineitemgroup[skills]
+%\setupitemgroup[skills][1][text][symbol=,lefttext=,righttext=","]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%D Custom headings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section formatter
-\define[1]\CVSectionFormat{\setcharactercasing[WORD]\tfa\bf #1}
+\define[1]\@CVSectionFormat{\setcharactercasing[WORD]\tfa\bf #1}
 
-%D CV Title
-%\setupframed[height=2.0cm,frame=off]  
-% \define[2]\cvtitle{%
-%   \framed[width=11cm,top=\vss,bottom=\vss]{%
-%     {\switchtobodyfont[16pt]\bf \uppercase{#1}}
-%     \blank[3mm]\hairline\blank[.25mm]
-%     {\switchtobodyfont[14.5pt] #2}
-%   }  
-% }
-
-% \define[1]\cvsummary{%
-%     Summary\\
-%     #1  
-% }
-
-%D CV Subtitle
-% \define[1]\cvsubtitle{%
-%     \startalignment[middle]
-%     {\CVSectionFormat #1}
-%     \stopalignment
-% }
-
-%D Summary section header
-% https://tex.stackexchange.com/questions/497352/context-heading-text-surrounded-by-lines
-\definefiller
-  [SectionRule]
-  [alternative=rule,
-   height=0.7ex,
-   depth=-0.6ex]
-\definefiller
-  [SectionLeftRule]
-  [SectionRule]
-  [left=\zerowidthnobreakspace,
-   right=\quad]
-\definefiller
-  [SectionRightRule]
-  [SectionRule]
-  [left=\quad,
-   right=\zerowidthnobreakspace]
-\definehead[cvsummary][title]
-\setuphead
-  [title]
-  [%align=middle,
-    page=no,
-    %before={\vspace[-2cm]},
-    %after={\vspace[-1cm]},
-   textstyle={\CVSectionFormat},
-   textcommand=\groupedcommand{\filler[SectionLeftRule]}{\filler[SectionRightRule]}]
-
-%D CV heading
-\definehead[cvhead][subject]
-\define\smallskip{\blank[1mm]}
-\setuphead[subject][%
-  after=\hrule\smallskip,%
-  textstyle={\CVSectionFormat},
-  %aftersection={\vspace[-1cm]}%
+\definehead[cvsection][subject]
+\setuphead[cvsection][%
+  after={\hrule\blank[2mm]},%
+  textstyle={\@CVSectionFormat}%
 ]
 
-\define[4]\cveducation{%
-  {\bf #1}\hfill{\it \color[vctgray]{#2}}\\
-  #3\hfill#4
-}
-
-\define[4]\cvjob{%
-  {\bf #1}\hfill{\it \color[vctgray]{#2}}\\
-  #3\hfill#4  
-}
+\setupbodyfont[10pt]
+\setupbodyfont[mylatosans]
 
 \protect
 \stopmodule

@@ -1,0 +1,604 @@
+\usemodule[vctresume,vctabbrv]
+
+%%%%%%%%%%%%%%%%
+%D Page layout %
+%%%%%%%%%%%%%%%%
+\startmode[onepage]%
+  \setmargins{1cm}%
+  \setupitemgroup[itemize][1][joinedup,nowhite,fit,packed][width=1em,distance=0.1cm]
+\stopmode
+\startmode[twopage]%
+  \setmargins{1.25cm}%
+  \setupitemgroup[itemize][1][joinedup,nowhite,fit,packed][]
+\stopmode
+
+\startmode[portuguese]%
+  \language[pt-br]%
+\stopmode
+\startmode[english]%
+  \language[en]%
+\stopmode
+
+\define\author{Victor\, Santos}
+\define\homeage{\url{https://vsantos.me/}}
+\define\linkedin{\url{https://www.linkedin.com/in/vctsantos}}
+\define\email{\href{mail:victor\_santos@fisica.ufc.br}{victor\_santos@fisica.ufc.br}}
+\define\github{\url{https://github.com/padawanphysicist}}
+\define\fortaleza{\href{https://maps.app.goo.gl/Bm2Fq6kGPq4pHVuQ9}{Fortaleza, Ceará, Brazil}}
+
+\define\jobname{%
+  \translate{%% [pt-br]
+    Cientista de Dados \| Desenvolvedor de Software \| Físico%
+  }{%% [en]
+    Data Scientist \| Software Engineer \| Physicist%
+  }%
+}
+
+\define\cvprofile{%
+  \translate{%% [pt-br]
+    Mais de 3 anos de experiência com soluções orientadas a dados para aumentar
+    a eficiência, a precisão e a utilidade do processamento de
+    dados. Experiência com {\it pipelines} de dados, bancos de dados e painéis
+    analíticos para fornecer {\it insights} e implementar soluções orientadas à
+    ação. Busco oportunidades que me permitam explorar a interseção da ciência
+    com os desafios enfrentados na tomada de decisão, ampliando meu conhecimento
+    técnico e impactando positivamente a organização.%
+  }{%% [en]
+    3+ years of experience with data driven solutions to increase efficienty,
+    accuracy and utility of data processing. Experienced with data pipelines,
+    databases and analytic dashboards to deliver insights and implement
+    action-oriented solutions. I am looking for opportunities that allow me to
+    explore the intersection of data science and the challenges of business
+    decisions, expanding my technical knowledge and positively impacting
+    organizations.%
+  }%  
+}
+
+\defineparagraphs
+  [vcard]
+  [n=3, distance=2em]
+\setupparagraphs
+  [vcard] [1]
+  [width=.6\makeupwidth, style=small]
+\setupparagraphs
+  [vcard] [2]
+  [width=.35\makeupwidth, align=flushright]
+\define\cvpersonalinfo{%
+  \startvcard
+    {\switchtobodyfont[24pt]\bf \WORD{\author}}\par
+    {\switchtobodyfont[12pt]\jobname}
+    \vcard
+    \FS{location-dot}\hfill\fortaleza\par
+    \FS{envelope}\hfill\email\par
+    \FB{linkedin}\hfill\linkedin\par
+    \FB{github}\hfill\github
+  \stopvcard
+}
+
+\starttext
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personal Info
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\doifmode{onepage}{\setupinterlinespace[2.7ex]}
+\startmode[onepage]
+  \startcolumnset[resume]  
+    \startcolumnsetspan[wide][default=tblr]
+      {\cvpersonalinfo}
+      {\cvprofile}
+      {\blank[3mm]}
+    \stopcolumnsetspan
+  %\stopcolumnset %% at the end of the document
+\stopmode
+
+\startmode[twopage]
+  {\cvpersonalinfo}
+  {\cvprofile}
+\stopmode  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Education
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\startcvsection[title={\translate{Formação}{Education}}]
+  \cvevent{%
+    \translate{Doutorado em Física}{Ph.D. in Physics}%
+  }{%
+    \MonthYear{08}{2010} — \MonthYear{08}{2014}%
+  }{%
+    Universidade Federal do Ceará %
+  }{%
+    {\Fortaleza}%
+  }{%
+    \color[vctgray]{\it \translate{Pesquisador visitante na}{Visiting scholar at} {\PSU}}%
+  }
+  \blank[2mm]%
+  \cvevent{%
+    \translate{Bacharelado em Física}{B.Sc. in Physics}%
+  }{%
+    \MonthYear{02}{2005} — \MonthYear{12}{2009}%
+  }{%
+    Universidade Federal do Ceará%
+  }{%
+    {\Fortaleza}%
+  }  
+\stopcvsection
+%%\doifmode{onepage}{\blank[-2mm]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\startcvsection[title={\translate{Experiência}{Experience}}]
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvevent{%
+    \translate{Cientista e Engenheiro de Dados}{Data Scientist & Data Engineer}%
+  }{%
+    \MonthYear{07}{2021} — \MonthYear{09}{2023}%
+  }{%
+    Instituto de Planejamento de Fortaleza\doifmode{twopage}{ (IPLANFOR)}%
+  }{%
+    \Fortaleza%
+  }{%
+    \startitemize
+      \translate{%
+      \item Liderou uma equipe de 2 cientistas de dados na implementação de {\it pipelines} para coleta e consolidação de dados de diferentes fontes dentro da Prefeitura de Fortaleza em um banco de dados integrado
+      \item Projetou uma plataforma analítica para obter insights sobre a cidade, permitindo que os tomadores de decisão calibrem e avaliem políticas públicas.
+      }{%
+      \item Lead a team of 2 data scientists in implementing the pipelines for collecting and consolidating data from different sources within the City Hall into an integrated database
+      \item Design an analytics platform to obtain insights about the city, allowing the policymakers to calibrate and evaluate public policies
+      }
+    \stopitemize
+    \doifmode{onepage}{\blank[2mm]}
+    \Skills: {\Rlang}, {\Python}, {\DataVisualization}, {\DataBases}, {\Storytelling}
+  }
+
+  \hlsep
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvevent{%
+    \translate{Cientista de Dados}{Data Scientist}%
+  }{%
+    \MonthYear{08}{2018} — \MonthYear{11}{2022}%
+  }{%
+    Fundação Cearense de Apoio ao Desenvolvimento Científico e Tecnológico\doifmode{twopage}{ (FUNCAP)}%
+  }{%
+    \Fortaleza%
+  }{%
+    \startitemize%%[fit,packed][distance=0.1cm]
+      \translate{%
+      \item Atuou junto às diretorias de finanças e pesquisa na criação de um relatório de análise e avaliação das pesquisas científicas desenvolvidas no estado do Ceará, estabelecendo um panorama das principais áreas financiadas pelo governo e um perfil dos pesquisadores e publicações no cenário nacional e internacional , por meio da coleta e análise de dados de bases de dados editoriais nacionais e internacionais, como a \href{https://lattes.cnpq.br/}{plataforma Lattes}, \href{https://www.scielo.br}{Scielo}, \href{https://scholar.google.com.br/}{Google Acadêmico} e \href{http://montenegro.funcap.ce.gov.br/sugba/}{plataforma Montenegro}.
+      }{%
+      \item Worked with finance and research boards to create a report on the analysis and evaluation of scientific research developed in the state of Ceará, establishing an overview of the main areas funded by the government and a profile of the researchers and publications within the national and international scenario, through collecting and analyzing of data from national and international publishing databases, such as the \href{https://lattes.cnpq.br/}{Lattes platform}, \href{https://www.scielo.br}{Scielo}, \href{https://scholar.google.com.br/}{Google Scholar} and \href{http://montenegro.funcap.ce.gov.br/sugba/}{Montenegro platform}.
+      }
+    \stopitemize
+    \doifmode{onepage}{\blank[2mm]}
+    \Skills: {\Rlang}, {\Ruby}, {\DataBases}, {\DataVisualization}, {\Storytelling}
+  }
+  %{\blank[-1mm]\hlsep}
+  \hlsep
+  
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvevent{%
+    \translate{Professor Substituto}{Lecturer}%
+  }{%
+    \MonthYear{02}{2017} — \MonthYear{02}{2019}%
+  }{%
+    Universidade Federal do Ceará%
+  }{%
+    \Fortaleza%
+  }{%
+    \startitemize%%[fit,packed][distance=0.1cm]
+      \translate{%
+      \item Lecionou cursos de Física Básica para cursos de Engenharia, Física, Geologia.
+      }{%   
+      \item Teach basic Physics courses for Engineering, Physics and Geology
+      \item Meet with and advise students outside class time for additional instruction as appropriate
+      }
+    \stopitemize
+    \doifmode{onepage}{\blank[2mm]}
+    \Skills: {\Python}, {\Storytelling}, {\Mentoring}
+  }
+  
+  %% Show this only in the long CV
+  \startmode[twopage]
+    %\page
+    \hlsep
+    %\blank[1mm]
+    
+    \cvevent{%
+      \translate{Analista de Dados}{Data Analyst}%
+    }{%
+      \MonthYear{01}{2017} — \MonthYear{07}{2017}%
+    }{%
+      Universidade de Fortaleza%
+    }{%
+      \Fortaleza%
+    }{%
+      \startitemize%%[fit,packed][distance=0.1cm]
+        \translate{%
+        \item Trabalhou com a equipe no desenvolvimento de relatório para o projeto {\bf E-Car Sharing}, que fornece um entendimento do impacto dos veículos elétricos na mobilidade urbana.
+        }{%
+        \item Worked with the team to develop a report for the project {\bf E-Car Sharing}, providing an understanding of the impact of electric vehicles in urban mobility.
+        }
+      \stopitemize
+      \doifmode{onepage}{\blank[2mm]}
+      \Skills: {\Research}, {\Storytelling}, {\DataVisualization}
+    }
+    
+    %\hlsep
+    
+    \cvevent{%
+      \translate{Estágio de Pós-Doutoramento}{Postdoctoral Researcher}%
+    }{%
+      \MonthYear{09}{2014} — \MonthYear{08}{2017}%
+    }{%
+      Universidade Federal do Ceará%
+    }{%
+      \Fortaleza%
+    }{%
+      \startitemize%%[fit,packed][distance=0.1cm]
+        \translate{%
+        \item Desenvolveu pesquisas sobre aspectos quânticos das teorias gravitacionais, obtendo limites para parâmetros cosmológicos observacionais que indicariam desvios da teoria clássica;
+        \item Coorientou 1 estudante de Doutorado e 2 de Mestrado.
+        }{%
+        \item Developed research on quantum aspects of gravitational theories, obtaining bounds for observational cosmological parameters which would indicate deviations from the classical theory.
+        \item Mentored 1 Ph.D. and 2 M.Sc.graduate students
+        }
+      \stopitemize
+      \doifmode{onepage}{\blank[2mm]}
+      \Skills: {\Python}, {\Research}, {\Storytelling}, {\Mentoring}
+    }    
+  \stopmode %% End twopage part
+\stopcvsection %% Experiência
+
+\doifmode{onepage}{\column}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hard Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \startsubject[title={Hard Skills}]
+%   \startitemize[packed]
+%     \item \Python\, (\NumPy, \Pandas, \SKlearn, \Flask, \Prefect)\dotfill{} {\it 10 years}
+%     \item \Rlang\, (\Shiny, \RMarkdown)\dotfill{} {\it 6 years}
+%     \item \GCP\dotfill{} {\it 2 years}
+%     \item \PLSQL\dotfill{} {\it 6 years}
+%     \item \Kubernetes\dotfill{} {\it 3 years}      
+%     \item \Spark\dotfill{} {\it 3 years}
+%     \item \Superset\dotfill{} {\it 3 years}
+%     \item \Docker\dotfill{} {\it 6 years}      
+%     \item \Ruby\, (\Watir)\dotfill{} {\it 6 years}
+%     \item \Clang\dotfill{} {\it 10 years}
+%     \item \Fortran\dotfill{} {\it 6 years}
+%     \item \Scheme\dotfill{} {\it 6 years}
+%     \item \Git\dotfill{} {\it 8 years}
+%   \stopitemize
+% \stopsubject
+
+\startcvsection[title={\translate{Habilidades}{Skills}}]
+  % \startluacode
+  %   myskills = {"{\\Python}", "R"}
+  %   for _, skill in ipairs(myskills) do
+  %     context("%s", skill)
+  %   end    
+  % \stopluacode
+  \startmode[onepage]
+    \dontleavehmode
+    \cvtag{\Statistics}\,\,\cvtag{\DataAnalysis}\,\,\cvtag{\Research}\par\blank[4mm]\dontleavehmode
+    \cvtag{\Python}\,\,\cvtag{\Rlang}\,\,\cvtag{\Scheme}\,\,\cvtag{HTML/CSS}\,\,\cvtag{\JavaScript}\par\blank[4mm]\dontleavehmode
+    \cvtag{\PostgreSQL}\,\,\cvtag{\BaseX}\par\blank[4mm]\dontleavehmode
+    \cvtag{\Docker}\,\,\cvtag{\Kubernetes}\,\,\cvtag{\OpenShift}\par\blank[4mm]\dontleavehmode
+    \cvtag{\GCP}\,\,\cvtag{\Spark}\par\blank[4mm]\dontleavehmode 
+    \cvtag{\Superset}\par\blank[4mm]\dontleavehmode
+    \cvtag{\Prefect}\,\,\cvtag{\Airflow}\par\blank[4mm]\dontleavehmode
+    \cvtag{\Git}\,\,\cvtag{Kanban}\,\,\cvtag{Unix}%\par\blank[2mm]\dontleavehmode 
+  \stopmode
+  \startmode[twopage]
+    \startitemize[packed,fit][distance=2.5mm]
+    \sym{\bf \translate{Gerais}{General Skills}:} {\Statistics}, {\DataCleaning}, {\DataAnalysis}, {\DataVisualization}, {\Research}, {\Mentoring}
+    \sym{\bf \translate{Linguagens de Programação}{Programming Languages}:} {\Python}, {\Rlang}, {\Clang}, {\Scheme}, HTML/CSS, {\JavaScript}, {\PLSQL}  
+    \sym{\bf \translate{Bancos de Dados}{Database/Server}:} {\PostgreSQL}, {\BaseX}
+    \sym{\bf \translate{Computação em Nuvem}{Cloud Computing}:} {\GCP}
+    \sym{\bf \translate{Containerização}{Containerization}:} {\Docker}, {\Kubernetes}, {\OpenShift}
+    \sym{\bf \translate{Outras Ferramentas}{Other Tools}:} {\Superset}, {\Spark}, {\Airflow}, {\Prefect}, {\Git}
+    \sym{\bf \translate{Sistemas Operacionais}{Operating Systems}:} Linux, Windows
+    \stopitemize
+  \stopmode
+  % \startalignment[flushleft]
+  %   %\startnarrower[left,right]
+  %     \startitemize[packed,horizontal,five]
+  %       \startitem \Python%\, (\NumPy, \Pandas, \SKlearn, \Flask, \Prefect)
+  %       \stopitem
+  %       \startitem \Rlang%\, (\Shiny, \RMarkdown)
+  %       \stopitem
+  %       \startitem \Clang
+  %       \stopitem
+  %       \startitem \PLSQL
+  %       \stopitem
+  %       \startitem \Kubernetes
+  %       \stopitem
+  %       \startitem \Ruby
+  %       \stopitem
+        
+  %       \startitem \Fortran
+  %       \stopitem
+  %       \startitem \Scheme
+  %       \stopitem
+  %       \startitem \Docker
+  %       \stopitem
+  %       \startitem \Kubernetes
+  %       \stopitem
+  %       \startitem \Superset
+  %       \stopitem
+  %       \startitem \Spark
+  %       \stopitem
+  %       \startitem \GCP
+  %       \stopitem
+  %     \stopitemize
+  %  % \stopnarrower
+  % \stopalignment
+\stopcvsection
+
+% \startcombination[2]
+%   {%    
+%     \framed[width=9cm,align=flushleft,style=\tfx,top=\vss,bottom=\vss,offset=0pt]{%
+%       {%
+%         {\switchtobodyfont[14pt]\bf\uppercase{Habilidades Interpessoais}}\\
+%         \blank[-3mm]
+%         \color[black]{\hl[25]}
+        
+%         \separator Pensamento Analítico%
+%         \separator Diligência%
+%         \separator Mineração de Dados%
+%         \separator Trabalho em Equipe%
+%         \separator Raspagem de Dados
+%       }%
+%     }%
+%   }%
+%   {}%
+%   {%
+%     \framed[width=9cm,align=flushleft,style=\tfx,top=\vss,bottom=\vss,offset=5pt]{%
+%       {%
+%         {\switchtobodyfont[14pt]\bf\uppercase{Languages}}\\
+%         \blank[-3mm]
+%         \color[black]{\hl[25]}
+        
+%         Inglês:\hfill {\it \color[vctgray]{C1}} \\
+%         Português:\hfill {\it \color[vctgray]{Nativo}}%
+%       }%
+%     }%
+%   }{}
+% \stopcombination
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Soft Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \startsubject[title={\translate{Habilidades Interpessoais}{Soft Skills}}]
+%   \startalignment[flushleft]
+%     %\startnarrower[left,right]
+%       \startitemize[horizontal,three]
+%         \startitem Adaptabilidade
+%         \stopitem
+%         \startitem Solução de Problemas
+%         \stopitem
+%         % \startitem Paciência
+%         % \stopitem
+%         \startitem Inteligência Emocional
+%         \stopitem
+%         % \startitem Web Scraping
+%         % \stopitem
+%         % \startitem Data Mining
+%         \stopitem
+%         \startitem Pensamento Analítico
+%         \stopitem
+%         \startitem Comunicação
+%         \stopitem
+%         \startitem Trabalho em Equipe
+%         \stopitem
+%       \stopitemize
+%     %\stopnarrower
+%   \stopalignment
+% \stopsubject
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Languages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\startcvsection[title={\translate{Idiomas}{Languages}}]
+  \startitemize
+    \item \translate{Inglês}{English}\hfill{\it\color[vctgray]{C1}}
+    \item \translate{Português}{Portuguese}\hfill{\it\color[vctgray]{\translate{Nativo}{Native}}}
+  \stopitemize
+\stopcvsection
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Projects
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\startcvsection[title={\translate{Projetos}{Projects}}]
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \cvproject{%
+    \href{https://github.com/mittleff/mittleff}{mittleffpy}%
+  }{%
+    \translate{%
+    Pacote {\Python} para cálculo eficiente da função de \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}.%
+  }{%
+    {\Python} package for efficiently compute the\doifmode{onepage}{\break} \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}.
+  }
+  }{%
+    {\it \color[vctgray]{\translate{Colaboração com}{Collaboration with} Hansjörg Seybold}}\blank[2mm]
+    \translate{%
+    Pacote {\Python} para cálculo eficiente da função de \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}, através de uma versão melhorada do algoritmo apresentado em:%
+  }{%
+    {\Python} package for efficiently compute the \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}, using an improved implementation of the algorithm presented in:
+  }
+  \startitemize
+  \sym{} \href{https://doi.org/10.1137/070700280}{Hansjörg Seybold and Rudolf Hilfer. Numerical algorithm for calculating the generalized Mittag-Leffler function. {\it SIAM journal on numerical analysis} {\bf 47}:1, 69-88 (2009)}
+  \stopitemize
+    {\Skills}: {\Python}, {\Clang}, {\Research}, {\UnitTesting}
+  }
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\doifonepageelse{\blank[3mm]}{\hlsep}
+  \hlsep
+  
+  \cvproject{%
+    \href{https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/atlas_capital_humano/}{\translate{Atlas do Capital Humano}{Atlas of Human Capital}}
+  }{%
+    \translate{%
+      Relatório e plataforma em {\Rlang} para monitorar a educação no município de Fortaleza.
+    }{%
+      {\Rlang} {\Shiny} Report and Dashboard to monitor data about education in Fortaleza.
+    }
+  }{%
+    \blank[2mm]
+    \translate{%
+      Relatório e plataforma para monitorar a educação no município de Fortaleza.
+    }{%
+      R Shiny Report and Dashboard to monitor data about education in Fortaleza.
+    }
+    \blank[2mm]
+    {\Skills}: {\Rlang} ({\Shiny}), {\PostgreSQL}, {\DataBases}, {\PublicPolicies}
+  }
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\doifonepageelse{\blank[3mm]}{\hlsep}
+  \hlsep
+  
+  \cvproject{%
+    \href{https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/painel/obsr/}{Mais Fortaleza}
+  }{%
+    \translate{%
+    Relatório e plataforma em {\Rlang} para monitorar a implementação da Política Nacional de Resíduos Sólidos em Fortaleza.
+  }{%
+    {\Rlang} {\Shiny} Report and Dashboard to monitor the implementation of the Brazilian Solid Waste Legislation in Fortaleza.
+  }
+  }{%
+    \blank[2mm]
+    \translate{%
+    Relatório e plataforma para monitorar, publicar e divulgar informações relacionadas a implementação da Política Nacional de Resíduos Sólidos em Fortaleza.
+  }{%
+    R Shiny Report and Dashboard to monitor, publish, and divulge information related to the implementation of the Brazilian Solid Waste Legislation (PNRS) in Fortaleza.
+  }
+  \blank[2mm]
+  {\Skills}: {\Rlang} ({\Shiny}), {\PostgreSQL}, {\DataBases}, {\PublicPolicies}
+  }
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\doifonepageelse{\blank[3mm]}{\hlsep}
+  \hlsep
+
+  \cvproject{%
+    \href{%
+      https://link.springer.com/article/10.1140/epjc/s10052-020-08445-2%
+    }{%
+      Greybody factor and quasinormal modes of\doifmode{onepage}{\break} Regular Black Holes%
+    }%
+  }{%
+    \translate{%
+      Investigação numérica das frequências quasinormais de oscilação de uma classe de buracos negros regulares.
+    }{%
+      Numerical investigation on the quasinormal frequencies of a class of regular black hole solutions.
+    }
+  }{%
+    \blank[2mm]
+    \translate{%
+      Investigação numérica das frequências quasinormais de oscilação de uma classe de buracos negros regulares.
+    }{%
+      Numerical investigation on the quasinormal frequencies of a class of regular black hole solutions.
+    }
+    \blank[2mm]
+    {\Skills}: {\Python}, {\Research}, {\AnalyticalThinking}
+  }
+  %{\bf }\\
+  
+  % \blank[2mm]
+  % \\
+  % \hlsep
+
+
+    % {\bf mittleffpy} \color[vctgray]{{\it (\translate{Colaboração com}{Collaboration with} Hansjörg Seybold)}}\\
+  % \url{https://github.com/mittleff/mittleff}\\ 
+  % \blank[2mm]
+  % \translate{%
+  %   Pacote {\Python} para cálculo eficiente da função de \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}, através de uma versão melhorada do algoritmo apresentado em:%
+  % }{%
+  %   {\Python} package for efficiently compute the \href{https://mathworld.wolfram.com/Mittag-LefflerFunction.html}{Mittag-Leffler function}, using an improved implementation of the algorithm presented in:
+  % }
+  % \startitemize
+  % \sym{} \href{https://doi.org/10.1137/070700280}{Hansjörg Seybold and Rudolf Hilfer. Numerical algorithm for calculating the generalized Mittag-Leffler function. {\it SIAM journal on numerical analysis} {\bf 47}:1, 69-88 (2009)}
+  % \stopitemize
+  %   {\Skills}: {\Python}, {\Clang}, {\Research}, {\UnitTesting}\\
+
+
+    
+  %\page
+  % \hlsep
+
+  % {\bf \translate{Atlas do Capital Humano}{Atlas of Human Capital}}\\
+  % \url{https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/atlas_capital_humano/}
+  % \blank[2mm]
+  % \translate{%
+  %   Relatório e plataforma para monitorar a educação no município de Fortaleza.
+  % }{%
+  %   R Shiny Report and Dashboard to monitor data about education in Fortaleza.
+  % }
+  % \blank[2mm]
+  % {\Skills}: {\Rlang} ({\Shiny}), {\PostgreSQL}, {\DataBases}, {\PublicPolicies}\\
+  % \hlsep
+  
+  % {\bf Mais Fortaleza}\\
+  % \url{https://observatoriodefortaleza.fortaleza.ce.gov.br/dados/painel/obsr/}
+  % \blank[2mm]
+  % \translate{%
+  %   Relatório e plataforma para monitorar, publicar e divulgar informações relacionadas à implementação da  the Brazilian Solid Waste Legislation (PNRS) in Fortaleza.
+  % }{%
+  %   R Shiny Report and Dashboard to monitor, publish, and divulge information related to the implementation of the Brazilian Solid Waste Legislation (PNRS) in Fortaleza.
+  % }
+  % \blank[2mm]
+  % {\Skills}: {\Rlang} ({\Shiny}), {\PostgreSQL}, {\DataBases}, {\PublicPolicies}\\
+  % \hlsep
+  
+  % {\bf Greybody factor and quasinormal modes of Regular Black Holes}\\
+  % \url{https://link.springer.com/article/10.1140/epjc/s10052-020-08445-2}
+  % \blank[2mm]
+  % \translate{%
+  %   Investigação numérica das frequências quasinormais de oscilação de uma classe de buracos negros regulares.
+  % }{%
+  %   Numerical investigation on the quasinormal frequencies of a class of regular black hole solutions.
+  % }
+  % \blank[2mm]
+  % {\Skills}: {\Python}, {\Research}, {\AnalyticalThinking}
+\stopcvsection
+
+% \startmode[portuguese]
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Certifications
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \startsubject[title={Certificações}]
+%   {\bf Cloud Hero DevOps Skills}\separator Google\\
+%   \color[vctgray]{\it Oct 2023}\\
+%   \href{https://www.cloudskillsboost.google/public_profiles/fc210278-2655-4032-ab3f-4e023606ab32/badges/5782236?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share}{Credential ID 5782236}\\
+%   {\bf Skills}: \Kubernetes, \Docker, \GCP\,(GCP)\\
+%   \color[gray]{\hl[53]}
+
+%   {\bf PostgreSQL: develop with PL/pgSQL}\separator Alura\\
+%   \color[vctgray]{\it Nov 2023}\\
+%   \href{https://cursos.alura.com.br/certificate/820db155-c52c-45ce-94e4-7938bac6744b}{Credential ID 820db155-c52c-45ce-94e4-7938bac6744b}\\
+%   {\bf Skills}: \PLSQL, \PostgreSQL, Databases\\
+%   \color[gray]{\hl[53]}
+  
+%   {\bf Data Science: data analysis and visualization}\separator Alura\\
+%   \color[vctgray]{\it Sep 2023}\\  
+%   \href{https://cursos.alura.com.br/certificate/34411445-73c1-4e45-bd20-8634a1b34f28}{Credential ID 34411445-73c1-4e45-bd20-8634a1b34f28}\\
+%   {\bf Skills}: \Python, Data Science, {\DataVis}, Analytical Skills, Data Analytics\\
+%   \color[gray]{\hl[53]}
+%   {\bf Statistics with Python: frequencies and measures}\separator Alura\\
+%   \color[vctgray]{\it Sep 2023}\\  
+%   \href{https://cursos.alura.com.br/certificate/2d19e570-f309-4273-86f3-499d320fe698}{Credential ID 2d19e570-f309-4273-86f3-499d320fe698}\\
+%   {\bf Skills}: \Python, Data Science, {\DataVisualization}, Analytical Skills, Data Analytics, Statistical Data Analysis
+% \stopsubject
+% \stopmode
+
+\doifmode{onepage}{\stopcolumnset}
+% \startmode[onepage]
+%   \stopcolumnset
+% \stopmode
+
+\stoptext %% end of document
