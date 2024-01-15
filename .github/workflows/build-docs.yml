@@ -11,4 +11,5 @@ jobs:
             apk add make
             cp -r fonts /usr/share/fonts
             fc-cache
+            context --version
             make
