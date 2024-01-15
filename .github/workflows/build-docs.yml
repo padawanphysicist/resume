@@ -9,4 +9,5 @@ jobs:
           scheme: full
           run: |
             apk add make
+            cp -r fonts /usr/share/fonts
             make
