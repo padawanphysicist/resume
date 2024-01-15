@@ -10,6 +10,7 @@ jobs:
           run: |
             apk add make
             cp -r fonts /usr/share/fonts
-            fc-cache
-            context --version
+            fc-cache -fv
+            mtxrun --script fonts --reload
+            context --reload
             make
